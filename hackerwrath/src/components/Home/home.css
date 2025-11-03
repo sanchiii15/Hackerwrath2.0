@@ -1,0 +1,136 @@
+
+
+body {
+  margin: 0;
+  background-color: #484864;
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  letter-spacing: 2px;
+  
+  color: #e8e8e8;
+}
+
+.home-container {
+  min-height: 100vh;
+  background-color: #303030;
+}
+
+.home-content {
+  padding: 90px 10%;
+  text-align: center;
+}
+
+.retro-heading {
+  color: #00ffff;
+  text-shadow: 1px 1px 0 #ff00ff;
+  font-size: 18px;
+}
+
+.retro-sub {
+  font-size: 10px;
+  color: #a3a3a3;
+  margin-bottom: 20px;
+}
+
+.create-post {
+  background-color: #222;
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.create-post textarea {
+  width: 90%;
+  height: 80px;
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #00ffff;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 10px;
+}
+
+.create-post button {
+  margin-top: 15px;
+  background-color: #00ffff;
+  border: none;
+  color: #000;
+  font-family: inherit;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+.create-post button:hover {
+  background-color: #ff00ff;
+  color: #fff;
+}
+
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.post-card {
+  width: 600px;
+  max-height: 100px;
+  background-color: #111;
+  border: 2px solid #00ffff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 0 8px #00ffff;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #ff00ff;
+}
+
+.post-content {
+  margin: 10px 0;
+  font-size: 10px;
+  color: #e8e8e8;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.post-actions button {
+  background-color: #00ffff;
+  border: none;
+  color: #000;
+  font-family: inherit;
+  padding: 5px 10px;
+  font-size: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.post-actions button:hover {
+  background-color: #ff00ff;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #ff4040;
+  color: #fff ;
+}
+
+.delete-btn:hover {
+  background-color: #ff0000;
+  box-shadow: 0 0 6px #ff00ff;
+}

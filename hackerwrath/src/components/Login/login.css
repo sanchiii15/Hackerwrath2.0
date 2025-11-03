@@ -1,0 +1,98 @@
+/* Center everything */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/tv-8760958_1280.png");
+  object-fit: cover;
+  background-position: center;
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+
+
+
+/* The login card */
+.login-box {
+    margin-left: -210px;
+  background: #303030;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+  width: 560px;
+  text-align: center;
+}
+
+/* Title */
+.login-title {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 24px;
+  
+}
+
+/* Labels and inputs */
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  color: #ccc;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  border-color: #00ff9d;
+  outline: none;
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #00ff9d;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #00cc7a;
+}
+
+/* Signup text */
+.signup-text {
+  color: #aaa;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #00ff9d;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
