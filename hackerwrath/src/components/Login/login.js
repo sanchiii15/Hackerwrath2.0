@@ -1,21 +1,52 @@
 import React, { useState } from "react";
 import "./login.css";
 import { useNavigate, Link } from "react-router-dom";
+import { apiFetch } from "../../config/api";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
-    if (email.trim() && password.trim()) {
-      navigate("/home");
-    } else {
-      alert("Please enter valid details!");
-    }
-    // Add your login logic here
+		setError("");
+		if (!email.trim() || !password.trim()) {
+			setError("Please enter valid details!");
+			return;
+		}
+
+		try {
+			setIsLoading(true);
+			const response = await apiFetch("/api/auth/login", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ email }),
+			});
+
+			if (!response.ok) {
+				const errorBody = await response.json().catch(() => ({}));
+				throw new Error(errorBody?.message || "Login failed. Please try again.");
+			}
+
+			const data = await response.json();
+			if (data?.user) {
+				try {
+					localStorage.setItem("user", JSON.stringify(data.user));
+				} catch (_) {
+					// ignore storage errors
+				}
+				navigate("/home");
+			} else {
+				setError("Unexpected response from server.");
+			}
+		} catch (err) {
+			setError(err?.message || "Something went wrong. Please try again.");
+		} finally {
+			setIsLoading(false);
+		}
   };
 
   return (
@@ -45,7 +76,13 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" className="login-btn">Login</button>
+					{error ? (
+						<p className="error-text" style={{ color: "#e11d48", marginTop: "8px" }}>{error}</p>
+					) : null}
+
+					<button type="submit" className="login-btn" disabled={isLoading}>
+						{isLoading ? "Logging in..." : "Login"}
+					</button>
         </form>
         <p className="signup-text">
             Don’t have an account? <Link to="/signup">Sign up</Link>
