@@ -5,7 +5,7 @@ const SignUp = () => {
 
    const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(${API_URL}/auth/register, {
+    const res = await fetch(`${API_URL}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)
@@ -59,6 +59,6 @@ const SignUp = () => {
       </div>
     </div>
   );
-};
+;
 
 export default SignUp;
