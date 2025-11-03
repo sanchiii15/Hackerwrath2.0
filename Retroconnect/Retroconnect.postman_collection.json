@@ -1,0 +1,196 @@
+{
+  "info": {
+    "name": "Retroconnect API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for Retroconnect backend: health, mock auth, posts, discovery, and AI assistant."
+  },
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "GET /",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mock Auth",
+      "item": [
+        {
+          "name": "GET /api/auth/users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/auth/users", "host": ["{{baseUrl}}"], "path": ["api","auth","users"] }
+          }
+        },
+        {
+          "name": "POST /api/auth/register",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {"mode":"raw","raw":"{\n  \"name\": \"Retro User\",\n  \"email\": \"user@retro.com\"\n}"},
+            "url": { "raw": "{{baseUrl}}/api/auth/register", "host": ["{{baseUrl}}"], "path": ["api","auth","register"] }
+          }
+        },
+        {
+          "name": "POST /api/auth/login",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {"mode":"raw","raw":"{\n  \"email\": \"user@retro.com\"\n}"},
+            "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api","auth","login"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Posts (CRUD)",
+      "item": [
+        {
+          "name": "POST /api/posts",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {"mode":"raw","raw":"{\n  \"title\": \"Hello\",\n  \"content\": \"World\",\n  \"author\": \"000000000000000000000001\"\n}"},
+            "url": { "raw": "{{baseUrl}}/api/posts", "host": ["{{baseUrl}}"], "path": ["api","posts"] }
+          }
+        },
+        {
+          "name": "GET /api/posts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/posts", "host": ["{{baseUrl}}"], "path": ["api","posts"] }
+          }
+        },
+        {
+          "name": "GET /api/posts/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/posts/{{postId}}", "host": ["{{baseUrl}}"], "path": ["api","posts","{{postId}}"] }
+          }
+        },
+        {
+          "name": "PUT /api/posts/:id",
+          "request": {
+            "method": "PUT",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {"mode":"raw","raw":"{\n  \"title\": \"Updated\",\n  \"content\": \"Updated content\"\n}"},
+            "url": { "raw": "{{baseUrl}}/api/posts/{{postId}}", "host": ["{{baseUrl}}"], "path": ["api","posts","{{postId}}"] }
+          }
+        },
+        {
+          "name": "DELETE /api/posts/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/posts/{{postId}}", "host": ["{{baseUrl}}"], "path": ["api","posts","{{postId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Discovery",
+      "item": [
+        {
+          "name": "POST /api/discovery/complaint",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {"mode":"raw","raw":"{\n  \"title\": \"Electricity cut\",\n  \"description\": \"Out for 5 hours\",\n  \"category\": \"electricity\",\n  \"location\": \"Block B\",\n  \"userId\": \"000000000000000000000001\"\n}"},
+            "url": { "raw": "{{baseUrl}}/api/discovery/complaint", "host": ["{{baseUrl}}"], "path": ["api","discovery","complaint"] }
+          }
+        },
+        {
+          "name": "GET /api/discovery/complaints",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/discovery/complaints", "host": ["{{baseUrl}}"], "path": ["api","discovery","complaints"] }
+          }
+        },
+        {
+          "name": "GET /api/discovery/discover",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/discovery/discover?location=Block%20B&category=water", "host": ["{{baseUrl}}"], "path": ["api","discovery","discover"], "query": [{"key":"location","value":"Block B"},{"key":"category","value":"water"}] }
+          }
+        },
+        {
+          "name": "GET /api/discovery/discover-similar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/discovery/discover-similar?q=leakage&category=water", "host": ["{{baseUrl}}"], "path": ["api","discovery","discover-similar"], "query": [{"key":"q","value":"leakage"},{"key":"category","value":"water"}] }
+          }
+        },
+        {
+          "name": "GET /api/discovery/my-complaints",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/discovery/my-complaints?userId=000000000000000000000001", "host": ["{{baseUrl}}"], "path": ["api","discovery","my-complaints"], "query": [{"key":"userId","value":"000000000000000000000001"}] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Assistant",
+      "item": [
+        {
+          "name": "POST /api/ai/chat/start",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {"mode":"raw","raw":"{\n  \"complaintId\": \"sample-complaint\"\n}"},
+            "url": { "raw": "{{baseUrl}}/api/ai/chat/start", "host": ["{{baseUrl}}"], "path": ["api","ai","chat","start"] }
+          }
+        },
+        {
+          "name": "POST /api/ai/chat/:conversationId/message",
+          "request": {
+            "method": "POST",
+            "header": [{"key":"Content-Type","value":"application/json"}],
+            "body": {"mode":"raw","raw":"{\n  \"text\": \"What can I do next?\"\n}"},
+            "url": { "raw": "{{baseUrl}}/api/ai/chat/{{conversationId}}/message", "host": ["{{baseUrl}}"], "path": ["api","ai","chat","{{conversationId}}","message"] }
+          }
+        },
+        {
+          "name": "GET /api/ai/chat/:conversationId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/ai/chat/{{conversationId}}", "host": ["{{baseUrl}}"], "path": ["api","ai","chat","{{conversationId}}"] }
+          }
+        },
+        {
+          "name": "POST /api/ai/chat/:conversationId/close",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/api/ai/chat/{{conversationId}}/close", "host": ["{{baseUrl}}"], "path": ["api","ai","chat","{{conversationId}}","close"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "postId", "value": "000000000000000000000001" },
+    { "key": "conversationId", "value": "000000000000000000000001" }
+  ]
+}
+
+

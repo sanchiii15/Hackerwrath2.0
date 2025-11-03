@@ -5,6 +5,10 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/mockAuthRoutes');
 const postRoutes = require('./config/model/routes/postRoutes');
 const discoveryRoutes = require('./routes/discoveryRoutes');
+const aiRoutes = require('./routes/aiRoutes');
+
+// Register models early (for population refs like 'User')
+require('./config/model/user');
 
 const app = express();
 
@@ -19,6 +23,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/discovery', discoveryRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Health check
 app.get('/', (req, res) => {

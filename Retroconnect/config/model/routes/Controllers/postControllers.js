@@ -40,7 +40,7 @@ const updatePost = async (req, res) => {
       { $set: { title, content } },
       { new: true, runValidators: true }
     );
-    if (!post) return res.status(404).json({ message: 'Post not found' });
+    if (!post) return res.status(404).json({ message: 'Post not found' });          
     return res.json(post);
   } catch (err) {
     return res.status(500).json({ message: err.message || 'Server error' });
